@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29001.49
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalBreakthrough", "DigitalBreakthrough\DigitalBreakthrough.csproj", "{480F82E0-DD89-4B3F-B2BF-6D6EBD0D962C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{480F82E0-DD89-4B3F-B2BF-6D6EBD0D962C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{480F82E0-DD89-4B3F-B2BF-6D6EBD0D962C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{480F82E0-DD89-4B3F-B2BF-6D6EBD0D962C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{480F82E0-DD89-4B3F-B2BF-6D6EBD0D962C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5501EB8F-ECC1-4874-A687-A323C9A965CB}
+	EndGlobalSection
+EndGlobal
