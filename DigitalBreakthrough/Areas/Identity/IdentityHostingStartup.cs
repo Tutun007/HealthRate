@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Threading.Tasks;
 using DigitalBreakthrough.Areas.Identity.Data;
+using DigitalBreakthrough.Enums;
 using DigitalBreakthrough.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -23,6 +25,25 @@ namespace DigitalBreakthrough.Areas.Identity
                 services.AddDefaultIdentity<User>()
                     .AddEntityFrameworkStores<DigitalBreakthroughContext>();
             });
+
+        }
+
+        private async Task CreateUserRoles(IServiceProvider serviceProvider)
+        {
+            var RoleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+            foreach (Roles suit in Enum.GetValues(typeof(Roles)))
+            {
+
+            }
+            IdentityResult roleResult;
+            //Adding Admin Role
+            var roleCheck = await RoleManager.RoleExistsAsync(Roles.Patient.ToString());
+            if (!roleCheck)
+            {
+                //create the roles and seed them to the database
+                roleResult = await RoleManager.CreateAsync(new IdentityRole("Admin"));
+            }
         }
     }
 }
