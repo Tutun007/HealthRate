@@ -9,7 +9,7 @@ $(function () {
     $.ajax({
       type: "GET",
       url: "Api/Appointment/Get",
-      data: {'action':'add_ship_data','date':date},
+      data: {'date':date},
       beforeSend: function () {
  
       },
