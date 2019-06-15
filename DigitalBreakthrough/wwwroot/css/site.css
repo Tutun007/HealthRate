@@ -301,6 +301,30 @@ header .logout_link {
 
 /*zapisi*/
 
+/*form*/
+.auto_width_input {
+  display: inline-block;
+  width: auto;
+  height: calc(1.5em + 0.75rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  margin-right: 10px;
+}
+
+.input-append.date i{
+  font-size: 24px;
+  color: #2F80ED;
+}
+
+
 /*overlay*/
 
 #overlay {
@@ -396,43 +420,15 @@ header .logout_link {
 
 .thickbox_cont a.close {
   position: absolute;
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  overflow: hidden;
   top: 10px;
   right: 10px;
+  font-size: 30px;
   z-index: 2;
-  border: 2px solid #000;
-  border-radius: 50%;  
+  color: #000;
 }
 
-.thickbox_cont a.close span::before,
-.thickbox_cont a.close span::after{
-  content: '';
-  position: absolute;
-  height: 2px;
-  width: 100%;
-  top: 50%;
-  left: 0;
-  margin-top: -1px;
-  background: #000;
-}
-
-.thickbox_cont a.close span::before {
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
-
-.thickbox_cont a.close span::after{
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  -ms-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
-  transform: rotate(-45deg);
+.thickbox_cont .booking_popup {
+  margin-bottom: 20px;
 }
 
 /*thickbox*/

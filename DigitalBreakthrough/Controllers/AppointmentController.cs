@@ -23,21 +23,7 @@ namespace DigitalBreakthrough.Controllers
             _context = context;
             _mapper = mapper;
         }
-        // GET: api/Appointment
-        [HttpGet("{userId}", Name = "Get")]
-        public IEnumerable<AppointmentModel> Get(string userId)
-        {
-            var result = _context.Appointments.Where(a => a.Patient != null && a.Patient.Id == userId).ToList();
-            
-            return _mapper.Map<List<AppointmentModel>>(result);
-        }
-
-        [HttpGet("{date}", Name = "Get")]
-        public IEnumerable<AppointmentModel> Get(DateTime date)
-        {
-            var result = _context.Appointments.Where(a => a.Time.Date == date.Date && a.Patient == null).ToList();
-            return _mapper.Map<List<AppointmentModel>>(result);
-        }
+        
 
         // GET: api/Appointment/5
         [HttpGet("{id}", Name = "Get")]
