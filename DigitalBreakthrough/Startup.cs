@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using DigitalBreakthrough.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -37,8 +38,7 @@ namespace DigitalBreakthrough
             services.AddDbContext<DigitalBreakthroughContext>(options =>
                     options.UseSqlServer(
                         Configuration.GetConnectionString("DigitalBreakthroughContextConnection")));
-
-
+            services.AddAutoMapper();         
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
         }

@@ -159,8 +159,8 @@ namespace DigitalBreakthrough.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "Doctor", "bcc80972-855b-4c96-a22d-0e3be2dcff1c", "Doctor", null },
-                    { "Patient", "793b73c3-66b0-4435-a33f-6114fc648129", "Patient", null }
+                    { "Doctor", "bcc80972-855b-4c96-a22d-0e3be2dcff1c", "Doctor", "DOCTOR" },
+                    { "Patient", "793b73c3-66b0-4435-a33f-6114fc648129", "Patient", "PATIENT" }
                 });
 
             migrationBuilder.InsertData(
