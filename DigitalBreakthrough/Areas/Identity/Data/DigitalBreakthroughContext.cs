@@ -22,11 +22,28 @@ namespace DigitalBreakthrough.Models
             // Customize the ASP.NET Identity model and override the defaults if needed.
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
-            //builder.Entity<Report>()
-            //    .HasOne<User>(r => r.User)
-            //    .WithMany
-            //    .HasDefaultValue(0)
-            //    .IsRequired();
+
+            builder.Entity<IdentityRole>().HasData(
+                new IdentityRole { Id = Enums.Roles.Doctor.ToString(), Name = Enums.Roles.Doctor.ToString() },
+                new IdentityRole { Id = Enums.Roles.Patient.ToString(), Name = Enums.Roles.Patient.ToString() });
+
+            builder.Entity<AnalyseType>().HasData(
+                new AnalyseType { Id=5, Name = "Кровь из вены" , Comment = "Какой-то комментарий"},
+                new AnalyseType { Id = 1, Name = "УЗИ"},
+                new AnalyseType { Id = 2, Name = "ФЛЮ"},
+                new AnalyseType { Id = 3, Name = "Моча" },
+                new AnalyseType { Id = 4, Name = "Кал" });
+
+            builder.Entity<TreatmentType>().HasData(
+                new TreatmentType { Id = 2, Name = "Медикоментозное лечение", Comment = "Какой-то комментарий" },
+                new TreatmentType { Id = 1, Name = "Процедура электрофорез" });
         }
+
+        DbSet<Appointment> Appointments { get; set; }
+        DbSet<Review> Reviews { get; set; }
+        DbSet<Treatment> Treatments { get; set; }
+        DbSet<Analyse> Analyses { get; set; }
+        DbSet<AnalyseType> AnalyseTypes { get; set; }
+        DbSet<TreatmentType> TreatmentTypes { get; set; }
     }
 }

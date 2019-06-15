@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 
 namespace DigitalBreakthrough.Enums
 {
-    public enum AppointmentStatus
+    public enum EventStatus
     {
         Forming = 0,
         Awaiting = 1,
-        Processing = 2,
-        Closed = 3,
+        InProgress = 2,
+        Finished = 3,
         Canceled = 4
     }
 }

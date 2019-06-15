@@ -5,17 +5,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using DigitalBreakthrough.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DigitalBreakthrough.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
+        
         public IActionResult Index()
         {
-            if(HttpContext.User.Identity.Name == null)
-            {
-                return Redirect("/Identity/Account/Login");
-            }
             return View();
         }
 
