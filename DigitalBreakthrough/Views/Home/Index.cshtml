@@ -1,5 +1,25 @@
-﻿@using DigitalBreakthrough.ViewModels;
-@model  PatientHomeModel
-@{
-    ViewData["Title"] = "Home Page";
+﻿@{
+  ViewData["Title"] = "Home Page";
 }
+
+@using DigitalBreakthrough.ViewModels;
+@model PatientHomeModel
+<partial name="_header" />
+
+<partial name="_zapisi" />
+
+<partial name="_footer" />
+
+<!--popups-->
+
+<div class="thickbox_cont auto" id="booking_popup" style="display: none;">
+  <a class="close" href="#"><span></span></a>
+  <div class="inner">      
+    <h2 class="booking_popup">Запись к врачу</h2>
+    <form>
+      <input name="user_id" type="hidden" value="@Model.UserId"/>
+      <input name="patient_adress" type="text" class="form-control" placeholder="Введите ваш адрес" />
+    </form>
+  </div>
+</div>
+
