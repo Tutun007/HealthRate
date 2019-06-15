@@ -6,16 +6,38 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using DigitalBreakthrough.Models;
 using Microsoft.AspNetCore.Authorization;
+using DigitalBreakthrough.ViewModels;
+using Microsoft.AspNetCore.Identity;
+using DigitalBreakthrough.Areas.Identity.Data;
+using AutoMapper;
 
 namespace DigitalBreakthrough.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Patient")]
     public class HomeController : Controller
     {
-        
+        DigitalBreakthroughContext _context;
+        UserManager<User> _userManager;
+        private readonly IMapper _mapper;
+
+
+        public HomeController(DigitalBreakthroughContext context, UserManager<User> userManager, IMapper mapper)
+        {
+            _context = context;
+            _userManager = userManager;
+            _mapper = mapper;
+        }
+
         public IActionResult Index()
         {
-            return View();
+            var userId = _userManager.GetUserId(HttpContext.User);
+            var data = new PatientHomeModel
+            {
+                UserId = userId,
+                Appointments = _mapper.Map<List<AppointmentModel>>(_context.Appointments.Where(a => a.Patient != null && a.Patient.Id == userId).ToList()),
+                Treatments = _context.Treatments.Where(a => a.ParentAppointment.Patient != null && a.ParentAppointment.Patient.Id == userId).ToList()
+            };
+            return View(data);
         }
 
         public IActionResult Privacy()
