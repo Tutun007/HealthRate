@@ -10,6 +10,8 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using System.Linq;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace DigitalBreakthrough.Areas.Identity.Pages.Account
 {
@@ -35,6 +37,8 @@ namespace DigitalBreakthrough.Areas.Identity.Pages.Account
 
         [BindProperty]
         public InputModel Input { get; set; }
+
+        public List<SelectListItem> Roles { get; set; }
 
         public string ReturnUrl { get; set; }
 
@@ -65,10 +69,16 @@ namespace DigitalBreakthrough.Areas.Identity.Pages.Account
             [Display(Name = "Подтвердите пароль")]
             [Compare("Password", ErrorMessage = "Пароли не совпадают.")]
             public string ConfirmPassword { get; set; }
+
+            public string Role { get; set; }
         }
 
         public void OnGet(string returnUrl = null)
         {
+            Roles = new List<SelectListItem> {
+                new SelectListItem { Value = "Doctor", Text = "Doctor" },
+                new SelectListItem { Value = "Patient", Text = "Patient" }
+            };
             ReturnUrl = returnUrl;
         }
 
@@ -85,6 +95,10 @@ namespace DigitalBreakthrough.Areas.Identity.Pages.Account
                     FullName = Input.LastName+" "+Input.FirstName
                 };
                 var result = await _userManager.CreateAsync(user, Input.Password);
+                if (!string.IsNullOrEmpty(Input.Role))
+                {
+                    await _userManager.AddToRoleAsync(user, Input.Role);
+                }
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");

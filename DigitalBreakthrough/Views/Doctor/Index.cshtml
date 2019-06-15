@@ -1,0 +1,11 @@
+﻿@using DigitalBreakthrough.Areas.Identity.Data;
+@model  List<User>
+@{
+    Layout = null;
+}
+ 
+@foreach(var item in Model)
+{
+    @item.FullName
+    <br />
+}

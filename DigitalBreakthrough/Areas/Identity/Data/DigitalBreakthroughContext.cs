@@ -24,8 +24,17 @@ namespace DigitalBreakthrough.Models
             // Add your customizations after calling base.OnModelCreating(builder);
 
             builder.Entity<IdentityRole>().HasData(
-                new IdentityRole { Id = Enums.Roles.Doctor.ToString(), Name = Enums.Roles.Doctor.ToString() },
-                new IdentityRole { Id = Enums.Roles.Patient.ToString(), Name = Enums.Roles.Patient.ToString() });
+                new IdentityRole {
+                    Id = Enums.Roles.Doctor.ToString()
+                , Name = Enums.Roles.Doctor.ToString()
+                ,
+                    NormalizedName = Enums.Roles.Doctor.ToString().ToUpper()
+                },
+                new IdentityRole {
+                    Id = Enums.Roles.Patient.ToString(),
+                    Name = Enums.Roles.Patient.ToString(),
+                    NormalizedName = Enums.Roles.Patient.ToString().ToUpper()
+                });
 
             builder.Entity<AnalyseType>().HasData(
                 new AnalyseType { Id=5, Name = "Кровь из вены" , Comment = "Какой-то комментарий"},
@@ -39,11 +48,11 @@ namespace DigitalBreakthrough.Models
                 new TreatmentType { Id = 1, Name = "Процедура электрофорез" });
         }
 
-        DbSet<Appointment> Appointments { get; set; }
-        DbSet<Review> Reviews { get; set; }
-        DbSet<Treatment> Treatments { get; set; }
-        DbSet<Analyse> Analyses { get; set; }
-        DbSet<AnalyseType> AnalyseTypes { get; set; }
-        DbSet<TreatmentType> TreatmentTypes { get; set; }
+        public DbSet<Appointment> Appointments { get; set; }
+        public DbSet<Review> Reviews { get; set; }
+        public DbSet<Treatment> Treatments { get; set; }
+        public DbSet<Analyse> Analyses { get; set; }
+        public DbSet<AnalyseType> AnalyseTypes { get; set; }
+        public DbSet<TreatmentType> TreatmentTypes { get; set; }
     }
 }

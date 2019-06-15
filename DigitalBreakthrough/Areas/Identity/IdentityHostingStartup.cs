@@ -23,6 +23,7 @@ namespace DigitalBreakthrough.Areas.Identity
                         context.Configuration.GetConnectionString("DigitalBreakthroughContextConnection")));
 
                 services.AddDefaultIdentity<User>()
+                    .AddRoles<IdentityRole>()
                     .AddEntityFrameworkStores<DigitalBreakthroughContext>();
             });
 
