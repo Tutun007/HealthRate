@@ -8,8 +8,8 @@ $(function () {
     var date = $('#booking_popup input[name="date"]').val();
     $.ajax({
       type: "GET",
-      url: "Api/Appointment",
-      data: {'action':'add_ship_data','date':date},
+      url: "Api/Appointment/Get",
+      data: {'date':date},
       beforeSend: function () {
  
       },
@@ -32,4 +32,13 @@ $(function () {
     $(this).parent('.thickbox_cont').removeClass('active');
     $('#overlay').removeClass('active');
   });
+  
+  $(".input-append.date").datepicker({
+    todayBtn: "linked",
+    language: "ru",
+    todayHighlight: true,
+    orientation: "bottom auto",
+    startDate: 0
+  });
+
 });

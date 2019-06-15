@@ -13,13 +13,21 @@
 <!--popups-->
 
 <div class="thickbox_cont auto" id="booking_popup" style="display: none;">
-  <a class="close" href="#"><span></span></a>
+  <a class="close" href="#"><i class="far fa-times-circle"></i></a>
   <div class="inner">      
     <h2 class="booking_popup">Запись к врачу</h2>
     <form>
       <input name="user_id" type="hidden" value="@Model.UserId"/>
-      <input name="patient_adress" type="text" class="form-control" placeholder="Введите ваш адрес" />
-      <input name="date" type="hidden" />
+      <div class="form-group">
+        <p>
+          <input name="patient_adress" type="text" class="form-control" placeholder="Введите ваш адрес" />
+        </p>
+      </div>
+      <div class="input-append date">
+        <p>
+          <input type="text" class="auto_width_input"><span class="add-on"><i class="far fa-calendar-alt"></i></span>
+        </p>
+      </div>
     </form>
   </div>
 </div>
