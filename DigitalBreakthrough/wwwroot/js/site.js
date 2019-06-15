@@ -5,6 +5,22 @@
 $(function () {
   $('body').on('click','.book_all_doc', function(e) {
     e.preventDefault();
+    var date = $('#booking_popup input[name="date"]').val();
+    $.ajax({
+      type: "GET",
+      url: "Api/Appointment",
+      data: {'action':'add_ship_data','date':date},
+      beforeSend: function () {
+ 
+      },
+      success: function(t){ 
+        if(t=='OK'){
+          
+        }
+        $('#overlay').toggleClass('active');
+        $('#booking_popup').toggleClass('active'); 
+      }
+    });
     $('#overlay').toggleClass('active');
     $('#booking_popup').toggleClass('active');  
   });
