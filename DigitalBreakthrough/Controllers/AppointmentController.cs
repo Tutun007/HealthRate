@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using DigitalBreakthrough.Areas.Identity.Data;
 using DigitalBreakthrough.Models;
 using DigitalBreakthrough.ViewModels;
 using Microsoft.AspNetCore.Http;
@@ -23,45 +22,27 @@ namespace DigitalBreakthrough.Controllers
             _context = context;
             _mapper = mapper;
         }
-        // GET: api/Appointment
-        [HttpGet("{userId}", Name = "Get")]
-        public IEnumerable<AppointmentModel> Get(string userId)
-        {
-            var result = _context.Appointments.Where(a => a.Patient != null && a.Patient.Id == userId).ToList();
-            
-            return _mapper.Map<List<AppointmentModel>>(result);
-        }
 
-        [HttpGet("{date}", Name = "Get")]
-        public IEnumerable<AppointmentModel> Get(DateTime date)
+        [Route("get")]
+        [HttpGet]
+        public IEnumerable<AppointmentModel> GetAppointments(string userId = null, DateTime? date = null)
         {
-            var result = _context.Appointments.Where(a => a.Time.Date == date.Date && a.Patient == null).ToList();
-            return _mapper.Map<List<AppointmentModel>>(result);
-        }
+            var result = _context.Appointments.AsQueryable();
+            if (date != null)
+            {
+                result = result.Where(a => a.Time.Date == date.Value.Date);
+            }
 
-        // GET: api/Appointment/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
-        {
-            return "value";
-        }
+            if (string.IsNullOrEmpty(userId))
+            {
+                result = result.Where(a => a.Patient == null);
+            }
+            else
+            {
+                result = result.Where(a => a.Patient != null && a.Patient.Id == userId);
+            }
 
-        // POST: api/Appointment
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT: api/Appointment/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            return _mapper.Map<List<AppointmentModel>>(result.ToList());
         }
     }
 }
