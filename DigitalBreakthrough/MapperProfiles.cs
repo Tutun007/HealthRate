@@ -15,7 +15,10 @@ namespace DigitalBreakthrough
             CreateMap<Appointment, AppointmentModel>()
                 .ForMember(dest => dest.DoctorId, opt => opt.MapFrom(src => src.Doctor == null ? "" : src.Doctor.Id))
                 .ForMember(dest => dest.DoctorName, opt => opt.MapFrom(src => src.Doctor == null ? "" : src.Doctor.FullName));
-            
+
+            CreateMap<ReviewFormModel, Review>();
+
+
         }
     }
 
