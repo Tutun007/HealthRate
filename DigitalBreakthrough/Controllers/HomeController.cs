@@ -12,6 +12,10 @@ namespace DigitalBreakthrough.Controllers
     {
         public IActionResult Index()
         {
+            if(HttpContext.User.Identity.Name == null)
+            {
+                return Redirect("/Identity/Account/Login");
+            }
             return View();
         }
 
