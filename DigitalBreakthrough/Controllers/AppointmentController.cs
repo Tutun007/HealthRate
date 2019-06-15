@@ -44,5 +44,14 @@ namespace DigitalBreakthrough.Controllers
 
             return _mapper.Map<List<AppointmentModel>>(result.ToList());
         }
+
+        [Route("signInto")]
+        [HttpPost]
+        public ActionResult SignIntoAppointment(string userId, int appointmentId)
+        {
+            _context.Appointments.Find(appointmentId).Patient = _context.Users.Find(userId);
+            _context.SaveChanges();
+            return Ok();
+        }
     }
 }
