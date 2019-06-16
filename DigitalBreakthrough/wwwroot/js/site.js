@@ -39,7 +39,6 @@ $(function () {
   
   $('body').on('change','.auto_width_input', function(e) {
     var date = $(this).val();
-    alert(date);
     $.ajax({
       type: "GET",
       url: "Api/Appointment/Get",
