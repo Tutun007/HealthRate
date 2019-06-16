@@ -72,7 +72,7 @@ $(function () {
       var book_id = $('.booking_list a.active').data('id');
       var user_id = $('#booking_popup input[name="user_id"]').val();
       $.ajax({
-        type: "POST",
+        type: "GET",
         url: "Api/Appointment/SignInto",
         data: {'userId':user_id,'appointmentId':book_id},
         beforeSend: function () {

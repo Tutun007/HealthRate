@@ -48,7 +48,11 @@ namespace DigitalBreakthrough.Models
                 new TreatmentType { Id = 1, Name = "Процедура электрофорез" });
         }
 
-        public DbSet<Appointment> Appointments { get; set; }
+        public DbSet<Appointment> Appointments
+        {
+            get;
+            set;
+        }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Treatment> Treatments { get; set; }
         public DbSet<Analyse> Analyses { get; set; }
