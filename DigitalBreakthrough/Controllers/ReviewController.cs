@@ -26,7 +26,7 @@ namespace DigitalBreakthrough.Controllers
 
         [Route("create")]
         [HttpPost]
-        public IActionResult CreateReview(ReviewFormModel request)
+        public IActionResult CreateReview([FromBody] ReviewFormModel request)
         {
             var appointment = _context.Appointments.Find(request.AppointmentId);
             var review = _mapper.Map<Review>(request);

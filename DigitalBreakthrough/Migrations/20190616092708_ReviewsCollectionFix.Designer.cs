@@ -4,14 +4,16 @@ using DigitalBreakthrough.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DigitalBreakthrough.Migrations
 {
     [DbContext(typeof(DigitalBreakthroughContext))]
-    partial class DigitalBreakthroughContextModelSnapshot : ModelSnapshot
+    [Migration("20190616092708_ReviewsCollectionFix")]
+    partial class ReviewsCollectionFix
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

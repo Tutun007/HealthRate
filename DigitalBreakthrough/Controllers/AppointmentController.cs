@@ -27,13 +27,18 @@ namespace DigitalBreakthrough.Controllers
 
         [Route("get")]
         [HttpGet]
-        public IEnumerable<AppointmentModel> GetAppointments(string userId = null, DateTime? date = null)
+        public IEnumerable<AppointmentModel> GetAppointments(string userId = null, string date = null)
         {
+            DateTime? dateVar = null;
+            if (date != String.Empty)
+            {
+                dateVar = DateTime.ParseExact(date, "dd.MM.yyyy", null);
+            }
             IQueryable<Appointment> result = _context.Appointments.Include(x=> x.Doctor).Include(x=>x.Patient);
 
-            if (date != null)
+            if (dateVar != null)
             {
-                result = result.Where(a => a.Time.Date == date.Value.Date);
+                result = result.Where(a => a.Time.Date == dateVar.Value.Date);
             }
 
             if (string.IsNullOrEmpty(userId))

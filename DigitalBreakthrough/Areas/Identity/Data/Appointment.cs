@@ -23,5 +23,7 @@ namespace DigitalBreakthrough.Areas.Identity.Data
         public string DoctorComment { get; set; }
 
         public string PatientComment { get; set; }
+
+        public IEnumerable<Review> Reviews { get; set; }
     }
 }
