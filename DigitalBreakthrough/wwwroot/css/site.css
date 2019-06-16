@@ -337,8 +337,50 @@ header .logout_link {
   text-decoration: none;
 }
 
+.form_cols_name {
+  font-size: 0;
+  text-align: left;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.form_cols_name span {
+  display: inline-block;
+  width: 50%;
+  color: #333;
+  font-size: 18px;
+  line-height: 21px;
+  font-weight: 700;
+}
+
 .booking_day {
   float: left;
+}
+
+.booking_list li  {
+  width: 100%;
+  text-align: left;
+  list-style: none;
+}
+
+.booking_list li a {
+  position: relative;
+}
+
+.booking_list li a.active:before {
+  content: '\f067';
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  position: absolute;
+  right: 0;
+}
+
+.booking_list li  span {
+  display: inline-block;
+  width: 50%;
+  font-size: 18px;
+  line-height: 21px;
+  margin-bottom: 5px;
 }
 
 /*form*/
@@ -403,9 +445,9 @@ header .logout_link {
 @media only screen and (min-width:768px){
   .thickbox_cont {
     width: 580px;
-    height: 330px;
+    height: 400px;
     margin-left: -290px;
-    margin-top: -165px;
+    margin-top: -200px;
     top: 50%;
     left: 50%;
   }
@@ -424,13 +466,7 @@ header .logout_link {
   overflow-x: hidden;
 }
 
-.thickbox_cont .inner ul li,
-.thickbox_cont_static .inner ul li {
-  list-style: disc inside;
-}
-
-.thickbox_cont .inner ul li a,
-.thickbox_cont_static .inner ul li a {
+.thickbox_cont .inner ul li a {
   -ms-word-break: break-all;
   word-break: break-all;
 }
