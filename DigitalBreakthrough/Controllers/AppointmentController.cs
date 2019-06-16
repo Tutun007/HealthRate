@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using DigitalBreakthrough.Areas.Identity.Data;
 using DigitalBreakthrough.Models;
 using DigitalBreakthrough.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace DigitalBreakthrough.Controllers
 {
@@ -27,7 +29,8 @@ namespace DigitalBreakthrough.Controllers
         [HttpGet]
         public IEnumerable<AppointmentModel> GetAppointments(string userId = null, DateTime? date = null)
         {
-            var result = _context.Appointments.AsQueryable();
+            IQueryable<Appointment> result = _context.Appointments.Include(x=> x.Doctor).Include(x=>x.Patient);
+
             if (date != null)
             {
                 result = result.Where(a => a.Time.Date == date.Value.Date);
@@ -42,7 +45,7 @@ namespace DigitalBreakthrough.Controllers
                 result = result.Where(a => a.Patient != null && a.Patient.Id == userId);
             }
 
-            return _mapper.Map<List<AppointmentModel>>(result.ToList());
+            return _mapper.Map<List<AppointmentModel>>(result);
         }
 
         [Route("signInto")]

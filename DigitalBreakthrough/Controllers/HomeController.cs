@@ -34,7 +34,7 @@ namespace DigitalBreakthrough.Controllers
             var data = new PatientHomeModel
             {
                 UserId = userId,
-                Appointments = _mapper.Map<List<AppointmentModel>>(_context.Appointments.Where(a => a.Patient != null && a.Patient.Id == userId).ToList()),
+                Appointments = _mapper.Map<List<AppointmentModel>>(_context.Appointments.Where(a => a.Patient != null && a.Patient.Id == userId)),
                 Treatments = _context.Treatments.Where(a => a.ParentAppointment.Patient != null && a.ParentAppointment.Patient.Id == userId).ToList()
             };
             return View(data);
