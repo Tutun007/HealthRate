@@ -10,10 +10,11 @@ using DigitalBreakthrough.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using DigitalBreakthrough.Areas.Identity.Data;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 
 namespace DigitalBreakthrough.Controllers
 {
-    [Authorize(Roles = "Patient")]
+    [Authorize]
     public class HomeController : Controller
     {
         DigitalBreakthroughContext _context;
@@ -34,7 +35,12 @@ namespace DigitalBreakthrough.Controllers
             var data = new PatientHomeModel
             {
                 UserId = userId,
-                Appointments = _mapper.Map<List<AppointmentModel>>(_context.Appointments.Where(a => a.Patient != null && a.Patient.Id == userId)),
+                Appointments = _mapper.Map<List<AppointmentModel>>(
+                    _context.Appointments
+                    .Include(a=> a.Patient)
+                    .Include(a=> a.Doctor)
+                    .Include(a => a.PreviousAppointment)
+                    .Where(a => a.Patient != null && a.Patient.Id == userId)),
                 Treatments = _context.Treatments.Where(a => a.ParentAppointment.Patient != null && a.ParentAppointment.Patient.Id == userId).ToList()
             };
             return View(data);

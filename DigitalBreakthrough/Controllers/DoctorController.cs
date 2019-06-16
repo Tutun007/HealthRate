@@ -2,27 +2,38 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using DigitalBreakthrough.Areas.Identity.Data;
 using DigitalBreakthrough.Models;
+using DigitalBreakthrough.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace DigitalBreakthrough.Controllers
 {
-    [Authorize(Roles = "Patient")]
+    [Authorize(Roles = "Doctor")]
     public class DoctorController : Controller {
 
         DigitalBreakthroughContext _context;
+        UserManager<User> _userManager;
+        private readonly IMapper _mapper;
 
-        public DoctorController(DigitalBreakthroughContext context)
+        public DoctorController(DigitalBreakthroughContext context, UserManager<User> userManager, IMapper mapper)
         {
             _context = context;
+            _userManager = userManager;
+            _mapper = mapper;
         }
         // GET: Doctor
         public ActionResult Index()
         {
-            var users = _context.Users.Where(u => _context.UserRoles.Any(ur => ur.RoleId == "Doctor" && ur.UserId == u.Id)).ToList();
-            return View(users);
+            var appointments = _context.Appointments
+                .Include(a=>a.Patient).Include(a => a.Doctor)
+                .Where(a => a.Doctor.Id == _userManager.GetUserId(HttpContext.User) && a.Patient != null).ToList();
+            return View(_mapper.Map<List<AppointmentModel>>(appointments));
         }
 
         // GET: Doctor/Details/5
