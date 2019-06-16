@@ -78,18 +78,12 @@ $(function () {
         url: "Api/Appointment/SignInto",
         data: {'userId':user_id,'appointmentId':book_id},
         beforeSend: function () {
-          $('.booking_list').empty();
+          
         },
         success: function(t){ 
-          if(t!='') {
-            //var obj = jQuery.parseJSON(t);
-            $.each( t, function( key, value ) {
-              $('.booking_list').append('<li><a href="#" class="task" data-id="'+value.id+'" data-doc="'+value.doctorId+'" data-time="'+value.time+'">'+
-                '<span class="docName">'+value.doctorName+'</span>'+
-                '<span class="docTime">'+value.time+'</span>'
-              +'</a></li>');
-            });
-          }
+          $('#overlay').toggleClass('active');
+          $('#booking_popup').toggleClass('active'); 
+          document.location.reload(true);
         }
       });
     }else {
