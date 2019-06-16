@@ -5,6 +5,7 @@
 $(function () {
   $('body').on('click','.book_all_doc', function(e) {
     e.preventDefault();
+    $('.booking_day').datepicker('update', new Date());
     var date = $('#booking_popup input[name="date"]').val();
     $.ajax({
       type: "GET",
@@ -14,15 +15,10 @@ $(function () {
  
       },
       success: function(t){ 
-        if(t=='OK'){
-          
-        }
         $('#overlay').toggleClass('active');
         $('#booking_popup').toggleClass('active'); 
       }
     });
-    $('#overlay').toggleClass('active');
-    $('#booking_popup').toggleClass('active');  
   });
   
   //popup
@@ -30,6 +26,12 @@ $(function () {
   $('body').on('click','.thickbox_cont .close', function(e) {
     e.preventDefault();
     $(this).parent('.thickbox_cont').removeClass('active');
+    $('#overlay').removeClass('active');
+  });
+  
+  $('body').on('click','.thickbox_cont .close2', function(e) {
+    e.preventDefault();
+    $(this).parents('.thickbox_cont').removeClass('active');
     $('#overlay').removeClass('active');
   });
   

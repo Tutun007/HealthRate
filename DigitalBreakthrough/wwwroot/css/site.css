@@ -284,10 +284,6 @@ header .logout_link {
   text-decoration: none;
 }
 
-.zapisi .row   .inner {
-  cursor: pointer;
-}
-
 .zapisi .row .main  .inner span:before {
   content: '';
 }
@@ -324,7 +320,28 @@ header .logout_link {
   color: #2F80ED;
 }
 
+.input-append.date {
+  display: inline-block;
+}
 
+.show_in_map {
+  float: right;
+  color: #BDBDBD;
+  line-height: 21px;
+  padding: 5px 20px;
+  border: 2px dashed #C9D6DF;
+  font-size: 18px;
+}
+
+.show_in_map:hover {
+  text-decoration: none;
+}
+
+.booking_day {
+  float: left;
+}
+
+/*form*/
 /*overlay*/
 
 #overlay {

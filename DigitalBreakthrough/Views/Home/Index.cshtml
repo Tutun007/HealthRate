@@ -14,7 +14,7 @@
 
 <div class="thickbox_cont auto" id="booking_popup" style="display: none;">
   <a class="close" href="#"><i class="far fa-times-circle"></i></a>
-  <div class="inner">      
+  <div class="inner text-center">      
     <h2 class="booking_popup">Запись к врачу</h2>
     <form>
       <input name="user_id" type="hidden" value="@Model.UserId"/>
@@ -23,11 +23,17 @@
           <input name="patient_adress" type="text" class="form-control" placeholder="Введите ваш адрес" />
         </p>
       </div>
-      <div class="input-append date">
-        <p>
-          <input type="text" class="auto_width_input"><span class="add-on"><i class="far fa-calendar-alt"></i></span>
-        </p>
-      </div>
+      <div class="form-group clearfix">
+        <div class="input-append date booking_day">
+          <p>
+            <input type="text" class="auto_width_input"><span class="add-on"><i class="far fa-calendar-alt"></i></span>
+          </p>
+        </div>
+        <a href="#" class="show_in_map">Показать на карте</a>
+      </div> 
+      <button type="submit" class="btn btn-primary">Записаться</button>
+      <button type="submit" class="btn btn-light close2">Отменить</button>
+       
     </form>
   </div>
 </div>
