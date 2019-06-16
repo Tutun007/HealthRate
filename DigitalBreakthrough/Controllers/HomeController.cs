@@ -40,6 +40,7 @@ namespace DigitalBreakthrough.Controllers
                     .Include(a=> a.Patient)
                     .Include(a=> a.Doctor)
                     .Include(a => a.PreviousAppointment)
+                    .Include(a=>a.Reviews)
                     .Where(a => a.Patient != null && a.Patient.Id == userId)),
                 Treatments = _context.Treatments
                     .Include(a => a.ParentAppointment)

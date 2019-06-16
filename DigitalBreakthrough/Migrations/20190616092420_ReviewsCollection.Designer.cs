@@ -4,14 +4,16 @@ using DigitalBreakthrough.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DigitalBreakthrough.Migrations
 {
     [DbContext(typeof(DigitalBreakthroughContext))]
-    partial class DigitalBreakthroughContextModelSnapshot : ModelSnapshot
+    [Migration("20190616092420_ReviewsCollection")]
+    partial class ReviewsCollection
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -133,6 +135,8 @@ namespace DigitalBreakthrough.Migrations
 
                     b.Property<int>("QualityReview");
 
+                    b.Property<int?>("ReviewId");
+
                     b.Property<int>("SpeedReview");
 
                     b.Property<string>("Text");
@@ -140,6 +144,8 @@ namespace DigitalBreakthrough.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AppointmentId");
+
+                    b.HasIndex("ReviewId");
 
                     b.ToTable("Reviews");
                 });
@@ -272,14 +278,14 @@ namespace DigitalBreakthrough.Migrations
                         new
                         {
                             Id = "Doctor",
-                            ConcurrencyStamp = "9381483e-1308-43e6-a1a5-f60c68c84521",
+                            ConcurrencyStamp = "d915a870-413a-4bec-b290-6abfc84988b5",
                             Name = "Doctor",
                             NormalizedName = "DOCTOR"
                         },
                         new
                         {
                             Id = "Patient",
-                            ConcurrencyStamp = "180669e8-20c1-40c0-a475-ac837a62fa80",
+                            ConcurrencyStamp = "9536ff12-3a1a-4b9c-b709-41ed19890522",
                             Name = "Patient",
                             NormalizedName = "PATIENT"
                         });
@@ -406,9 +412,13 @@ namespace DigitalBreakthrough.Migrations
             modelBuilder.Entity("DigitalBreakthrough.Areas.Identity.Data.Review", b =>
                 {
                     b.HasOne("DigitalBreakthrough.Areas.Identity.Data.Appointment", "Appointment")
-                        .WithMany("Reviews")
+                        .WithMany()
                         .HasForeignKey("AppointmentId")
                         .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("DigitalBreakthrough.Areas.Identity.Data.Review")
+                        .WithMany("Reviews")
+                        .HasForeignKey("ReviewId");
                 });
 
             modelBuilder.Entity("DigitalBreakthrough.Areas.Identity.Data.Treatment", b =>
