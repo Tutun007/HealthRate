@@ -41,7 +41,12 @@ namespace DigitalBreakthrough.Controllers
                     .Include(a=> a.Doctor)
                     .Include(a => a.PreviousAppointment)
                     .Where(a => a.Patient != null && a.Patient.Id == userId)),
-                Treatments = _context.Treatments.Where(a => a.ParentAppointment.Patient != null && a.ParentAppointment.Patient.Id == userId).ToList()
+                Treatments = _context.Treatments
+                    .Include(a => a.ParentAppointment)
+                    .ThenInclude(a=>a.Doctor)
+                    .Include(a => a.ParentAppointment)
+                    .ThenInclude(a => a.Patient)
+                    .Where(a => a.ParentAppointment.Patient != null && a.ParentAppointment.Patient.Id == userId).ToList()
             };
             return View(data);
         }

@@ -1,0 +1,15 @@
+﻿@using DigitalBreakthrough.ViewModels
+@model List<AppointmentModel>
+@foreach (AppointmentModel item in Model)
+{
+    @item.Id
+    <br />
+    @item.DoctorId
+    <br />
+    @item.DoctorName
+    <br />
+    @item.Time
+    <br />
+    @item.Status
+    <br />
+}
