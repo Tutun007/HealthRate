@@ -55,6 +55,8 @@ $(function () {
               '<span class="docTime">'+value.time+'</span>'
             +'</a></li>');
           });
+        }else {
+          $('.booking_list').append('<p>Нет доступных врачей для данного периода!</p>');
         }
       }
     });
