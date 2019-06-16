@@ -1,4 +1,5 @@
 ﻿@using DigitalBreakthrough.ViewModels
+@using DigitalBreakthrough.Enums
 @model List<AppointmentModel>
 @foreach (AppointmentModel item in Model)
 {
@@ -11,5 +12,13 @@
     @item.Time
     <br />
     @item.Status
+    <br />
+    @EventStatus.Awaiting
+    @EventStatus.Canceled
+    @EventStatus.Finished
+    @EventStatus.Forming
+    @EventStatus.InProgress
+    <br />
+    @(item.Status == EventStatus.Finished ? "test" : "asd")
     <br />
 }
