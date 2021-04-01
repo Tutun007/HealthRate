@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DigitalBreakthrough.Controllers
+namespace HealthRate.Controllers
 {
     public class TestController : Controller
     {

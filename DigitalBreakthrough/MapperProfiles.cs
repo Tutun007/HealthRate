@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
-using DigitalBreakthrough.Areas.Identity.Data;
-using DigitalBreakthrough.ViewModels;
+using HealthRate.Areas.Identity.Data;
+using HealthRate.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DigitalBreakthrough
+namespace HealthRate
 {
     public class MapperProfiles : Profile
     {        

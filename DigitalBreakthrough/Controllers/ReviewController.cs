@@ -3,22 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using DigitalBreakthrough.Areas.Identity.Data;
-using DigitalBreakthrough.Models;
-using DigitalBreakthrough.ViewModels;
+using HealthRate.Areas.Identity.Data;
+using HealthRate.Models;
+using HealthRate.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DigitalBreakthrough.Controllers
+namespace HealthRate.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class ReviewController : ControllerBase
     {
         private readonly IMapper _mapper;
-        DigitalBreakthroughContext _context;
+        HealthRateContext _context;
 
-        public ReviewController(DigitalBreakthroughContext context, IMapper mapper)
+        public ReviewController(HealthRateContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

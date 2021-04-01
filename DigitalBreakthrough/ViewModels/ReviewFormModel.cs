@@ -1,10 +1,10 @@
-﻿using DigitalBreakthrough.Enums;
+﻿using HealthRate.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DigitalBreakthrough.ViewModels
+namespace HealthRate.ViewModels
 {
     public class ReviewFormModel
     {

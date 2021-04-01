@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace DigitalBreakthrough.Areas.Identity.Pages.Account.Manage
+namespace HealthRate.Areas.Identity.Pages.Account.Manage
 {
     public static class ManageNavPages
     {

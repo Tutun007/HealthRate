@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using DigitalBreakthrough.Models;
+using HealthRate.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -14,7 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace DigitalBreakthrough
+namespace HealthRate
 {
     public class Startup
     {
@@ -35,9 +35,9 @@ namespace DigitalBreakthrough
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<DigitalBreakthroughContext>(options =>
+            services.AddDbContext<HealthRateContext>(options =>
                     options.UseSqlServer(
-                        Configuration.GetConnectionString("DigitalBreakthroughContextConnection")));
+                        Configuration.GetConnectionString("HealthRateContextConnection")));
             services.AddAutoMapper();         
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 

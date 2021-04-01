@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace DigitalBreakthrough.Migrations
+namespace HealthRate.Migrations
 {
     public partial class ReviewsCollectionFix : Migration
     {

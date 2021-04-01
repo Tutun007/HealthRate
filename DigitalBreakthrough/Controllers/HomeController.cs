@@ -4,25 +4,25 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using DigitalBreakthrough.Models;
+using HealthRate.Models;
 using Microsoft.AspNetCore.Authorization;
-using DigitalBreakthrough.ViewModels;
+using HealthRate.ViewModels;
 using Microsoft.AspNetCore.Identity;
-using DigitalBreakthrough.Areas.Identity.Data;
+using HealthRate.Areas.Identity.Data;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 
-namespace DigitalBreakthrough.Controllers
+namespace HealthRate.Controllers
 {
     [Authorize]
     public class HomeController : Controller
     {
-        DigitalBreakthroughContext _context;
+        HealthRateContext _context;
         UserManager<User> _userManager;
         private readonly IMapper _mapper;
 
 
-        public HomeController(DigitalBreakthroughContext context, UserManager<User> userManager, IMapper mapper)
+        public HomeController(HealthRateContext context, UserManager<User> userManager, IMapper mapper)
         {
             _context = context;
             _userManager = userManager;

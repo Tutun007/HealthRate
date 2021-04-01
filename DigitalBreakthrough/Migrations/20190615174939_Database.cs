@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace DigitalBreakthrough.Migrations
+namespace HealthRate.Migrations
 {
     public partial class Database : Migration
     {

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
-using DigitalBreakthrough.Areas.Identity.Data;
-using DigitalBreakthrough.Enums;
-using DigitalBreakthrough.Models;
+using HealthRate.Areas.Identity.Data;
+using HealthRate.Enums;
+using HealthRate.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
@@ -10,21 +10,21 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-[assembly: HostingStartup(typeof(DigitalBreakthrough.Areas.Identity.IdentityHostingStartup))]
-namespace DigitalBreakthrough.Areas.Identity
+[assembly: HostingStartup(typeof(HealthRate.Areas.Identity.IdentityHostingStartup))]
+namespace HealthRate.Areas.Identity
 {
     public class IdentityHostingStartup : IHostingStartup
     {
         public void Configure(IWebHostBuilder builder)
         {
             builder.ConfigureServices((context, services) => {
-                services.AddDbContext<DigitalBreakthroughContext>(options =>
+                services.AddDbContext<HealthRateContext>(options =>
                     options.UseSqlServer(
-                        context.Configuration.GetConnectionString("DigitalBreakthroughContextConnection")));
+                        context.Configuration.GetConnectionString("HealthRateContextConnection")));
 
                 services.AddDefaultIdentity<User>()
                     .AddRoles<IdentityRole>()
-                    .AddEntityFrameworkStores<DigitalBreakthroughContext>();
+                    .AddEntityFrameworkStores<HealthRateContext>();
             });
 
         }

@@ -3,25 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using DigitalBreakthrough.Areas.Identity.Data;
-using DigitalBreakthrough.Models;
-using DigitalBreakthrough.ViewModels;
+using HealthRate.Areas.Identity.Data;
+using HealthRate.Models;
+using HealthRate.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace DigitalBreakthrough.Controllers
+namespace HealthRate.Controllers
 {
     [Authorize(Roles = "Doctor")]
     public class DoctorController : Controller {
 
-        DigitalBreakthroughContext _context;
+        HealthRateContext _context;
         UserManager<User> _userManager;
         private readonly IMapper _mapper;
 
-        public DoctorController(DigitalBreakthroughContext context, UserManager<User> userManager, IMapper mapper)
+        public DoctorController(HealthRateContext context, UserManager<User> userManager, IMapper mapper)
         {
             _context = context;
             _userManager = userManager;

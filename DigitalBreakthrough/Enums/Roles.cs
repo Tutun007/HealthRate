@@ -1,5 +1,5 @@
 ﻿
-namespace DigitalBreakthrough.Enums
+namespace HealthRate.Enums
 {
     public enum Roles
     {

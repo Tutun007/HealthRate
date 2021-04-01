@@ -1,6 +1,6 @@
 using System;
 
-namespace DigitalBreakthrough.Models
+namespace HealthRate.Models
 {
     public class ErrorViewModel
     {

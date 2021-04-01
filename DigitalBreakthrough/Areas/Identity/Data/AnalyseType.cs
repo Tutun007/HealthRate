@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DigitalBreakthrough.Areas.Identity.Data
+namespace HealthRate.Areas.Identity.Data
 {
     public class AnalyseType
     {

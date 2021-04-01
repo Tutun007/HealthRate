@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29001.49
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigitalBreakthrough", "DigitalBreakthrough\DigitalBreakthrough.csproj", "{480F82E0-DD89-4B3F-B2BF-6D6EBD0D962C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthRate", "DigitalBreakthrough\HealthRate.csproj", "{480F82E0-DD89-4B3F-B2BF-6D6EBD0D962C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
